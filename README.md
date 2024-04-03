@@ -1,2 +1,2 @@
-# m3-nvim
-WIP
+# starter
+Starter config for NvChad
