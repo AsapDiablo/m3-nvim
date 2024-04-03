@@ -4,7 +4,8 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local servers = { "gopls" }
+local util = require "lspconfig/util"
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -15,9 +16,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- typescript
-lspconfig.tsserver.setup {
+-- golang
+lspconfig.gopls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+  cmd = {"gopls"},
+  filetypes = {"go","gomod","gowork","gotmpl"},
+  root_dir = util.root_pattern("go.work","go.mod",".git"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
 }
