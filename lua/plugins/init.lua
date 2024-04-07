@@ -71,4 +71,7 @@ return {
     build = function()
     end,
   },
+  {
+  "FabijanZulj/blame.nvim"
+  },
 }
