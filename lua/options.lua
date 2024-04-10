@@ -1,15 +1,6 @@
 require "nvchad.options"
 
 -- add yours here!
-
-local function map(mode, lhs, rhs, opt)
-  local options = { noremap = true}
-  if opts then 
-    options = vim.tbl_extend("force", options, opt)
-  end 
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opt)
-end
-
 local g = vim.g
 local o = vim.o
 
@@ -42,4 +33,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- telescopre
-map('n', 'ff', "<cmd>Telescope find_files<cr>",{})
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

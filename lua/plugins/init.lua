@@ -105,9 +105,9 @@ return {
   event = {"CmdlineEnter"},
   ft = {"go", 'gomod'},
   build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-  },  
+  },
   {
-    'nvmi-telescope/telescope.nvim', tag = '0.1.0',
+    'nvmi-telescope/telescope.nvim', tag = '0.1.6',
     requires = {
       {
         'nvim-lua/plenary.nvim',
