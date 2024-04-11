@@ -24,13 +24,26 @@ return {
    		},
    	},
  },
-   {
+{
    	"nvim-treesitter/nvim-treesitter",
    	opts = {
-  		ensure_installed = {"vim", "lua", "vimdoc","go"
-   		},
-   	},
-   },
+  		ensure_installed = {"vim", "lua", "vimdoc","go", "thrift", "proto"},
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false
+      },
+        -- 启用增量选择
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<CR>',
+          node_incremental = '<CR>',
+          node_decremental = '<BS>',
+          scope_incremental = '<TAB>',
+        }
+      },
+    },
+},
  {
     "jose-elias-alvarez/null-ls.nvim",
     ft = "go",
@@ -64,6 +77,7 @@ return {
             go = "go",
             gomodifytags = "gomodifytags",
 --            gotests = "~/go/bin/gotests", -- also you can set custom command path
+            gotest = "/Users/hupac/.gvm/pkgsets/go1.20/global/bin/gotests",
             impl = "impl",
             iferr = "iferr",
         }})
@@ -94,17 +108,17 @@ return {
   },
   {
   "ray-x/go.nvim",
-  dependencies = {  -- optional packages
-    "ray-x/guihua.lua",
-    "neovim/nvim-lspconfig",
-    "nvim-treesitter/nvim-treesitter",
-  },
-  config = function()
-    require("go").setup()
-  end,
-  event = {"CmdlineEnter"},
-  ft = {"go", 'gomod'},
-  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+   },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
   {
     'nvmi-telescope/telescope.nvim', tag = '0.1.6',
@@ -114,5 +128,11 @@ return {
         'nvim-lua/popup.nvim',
       }
     }
+  },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
   },
 }
