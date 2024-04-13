@@ -10,8 +10,6 @@ return {
 
     dapgo.setup()
     dapui.setup()
-    --require("dap-go").setup()
-    --require("dapui").setup()
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -28,6 +26,6 @@ return {
 
     vim.keymap.set("n", "<Leader>bt", dap.toggle_breakpoint, {})
     vim.keymap.set("n", "<Leader>bc", dap.continue, {})
-    vim.keymap.set("n", "<Leader>:r", dapgo.debug_test, {})
+    vim.keymap.set("n", "<Leader>dt", dapgo.debug_test, {})
   end,
 }
