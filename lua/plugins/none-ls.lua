@@ -8,7 +8,6 @@ local opts = {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.gopls,
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.gofmt,
         null_ls.builtins.formatting.goimports_reviser,
