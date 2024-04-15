@@ -1,2 +1,2 @@
-require("josean.core")
-require("josean.lazy")
+require("m3.core")
+require("m3.lazy")
